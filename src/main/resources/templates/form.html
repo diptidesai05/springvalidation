@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Login Form</title>
+	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+</head>
+<body>
+   </p><h1> Login Here</h1>
+     <!-- .container>.row>.col-md-6.offset-md-3  -->
+     <div class="container">
+     	<div class="row mt-5">
+     		<div class="col-md-6 offset-md-3">
+		     <form th:action="@{process}" method="post" th:object="${LoginData}">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">User Name</label>
+    <input type="text" th:name="userName" class="form-control" th:value="${LoginData.userName}" 
+      th:classappend="${#fields.hasErrors('userName') ? 'is-invalid': '' }"
+    id="exampleInputEmail1" aria-describedby="emailHelp">
+    
+    <!-- <p th:each="e : ${#fields.errors('userName')}" th:text="${e}"> </p> -->
+     <div th:each="e : ${#fields.errors('userName')}" th:text="${e}" id="validationServer03Feedback" class="invalid-feedback">
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Email Id</label>
+    <input type="email" th:name="emailId" class="form-control" th:value="${LoginData.emailId}" 
+    th:classappend="${#fields.hasErrors('emailId') ? 'is-invalid': '' }"
+    id="exampleInputPassword1">
+    <div th:each="e : ${#fields.errors('emailId')}" th:text="${e}" id="validationServer03Feedback" class="invalid-feedback">
+    </div>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>		 
+				 
+			 </div>
+     	</div>
+     </div>
+</body>
+</html>
